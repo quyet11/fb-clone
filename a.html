@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook - Đăng nhập hoặc đăng ký</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        .res {
+            display: flex;
+            align-items: center;
+        }
+        
+        .row {
+            padding: 0 15px;
+            min-height: 100vh;
+            justify-content: center;
+            background: #f0f2f5;
+        }
+        
+        .fb-form {
+            justify-content: space-between;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .fb-form .card {
+            margin-bottom: 90px;
+        }
+        
+        .fb-form img.logo {
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        
+        .fb-form p {
+            font-size: 1.75rem;
+            white-space: nowrap;
+            color: #1c1e21;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        
+        form input {
+            height: 55px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            padding: 0 14px;
+        }
+        
+        form input:focus {
+            outline: none;
+            border-color: #1877f2;
+        }
+        
+         ::placeholder {
+            color: #777;
+            font-size: 1.063rem;
+        }
+        
+        .fb-submit {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .fb-submit .login {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            background: #1877f2;
+            padding: 15px 0;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+        
+        .fb-submit .login:hover {
+            background: #0d65d9;
+        }
+        
+        form a {
+            text-decoration: none;
+        }
+        
+        .fb-submit .forgot {
+            color: #1877f2;
+            font-size: 0.875rem;
+        }
+        
+        .fb-submit .forgot:hover {
+            text-decoration: underline;
+        }
+        
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        
+        .button {
+            margin-top: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .button a {
+            padding: 15px 20px;
+            background: #42b72a;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1.063rem;
+            font-weight: 600;
+            transition: 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .button a:hover {
+            background: #3ba626;
+        }
+        
+        .illustrations {
+            position: relative;
+            height: 400px;
+            width: 500px;
+            margin-top: 20px;
+        }
+        
+        .illustrations img {
+            position: absolute;
+            border-radius: 8px;
+            /* Để giống hình bo góc */
+        }
+        /* Vị trí ước lượng, bạn có thể chỉnh */
+        
+        .emoji {
+            top: -50px;
+            left: -50px;
+            width: 100px;
+        }
+        
+        .knot {
+            top: 50px;
+            left: 0;
+            width: 200px;
+        }
+        
+        .skateboarder {
+            top: 0;
+            left: 150px;
+            width: 300px;
+        }
+        
+        .popcorn {
+            top: 250px;
+            left: 50px;
+            width: 150px;
+        }
+        
+        .girl {
+            top: 280px;
+            left: 250px;
+            width: 150px;
+        }
+        /* Mobile language and footer */
+        
+        .language {
+            display: none;
+            text-align: center;
+            color: #737373;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-mobile {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .footer-mobile .meta {
+            color: #737373;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .footer-mobile .links {
+            color: #737373;
+            font-size: 12px;
+        }
+        
+        .footer-mobile .links a {
+            color: #737373;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        
+        .footer-mobile .links a:hover {
+            text-decoration: underline;
+        }
+        /* Desktop footer (nếu có, nhưng ảnh 2 không thấy đầy đủ) */
+        
+        .footer-langs {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            display: block;
+        }
+        
+        footer ol {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            padding: 8px 0;
+            margin-left: 3vh;
+        }
+        
+        footer ol:first-child {
+            border-bottom: 1px solid #dddfe2;
+        }
+        
+        footer ol:first-child li:last-child button {
+            background-color: #f5f6f7;
+            border: 1px solid #ccd0d5;
+            outline: none;
+            color: #4b4f56;
+            padding: 0 8px;
+            font-weight: 700;
+            font-size: 12px;
+        }
+        
+        footer ol li {
+            padding-right: 20px;
+            font-size: 12px;
+            color: #8a8d91;
+        }
+        
+        footer ol li a {
+            text-decoration: none;
+            color: #8a8d91;
+        }
+        
+        footer ol li a:hover {
+            text-decoration: underline;
+        }
+        
+        footer small {
+            font-size: 12px;
+            color: #8a8d91;
+            margin-left: 3vh;
+        }
+        
+        @media (max-width: 900px) {
+            .fb-form {
+                flex-direction: column;
+                text-align: center;
+            }
+            .fb-form .card {
+                display: none;
+                /* Ẩn phần left trên mobile */
+            }
+            .language {
+                display: block;
+            }
+            .footer-langs {
+                display: none;
+            }
+            .footer-mobile {
+                display: block;
+            }
+            .fb-form form {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 460px) {
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row res">
+        <div class="fb-form res">
+            <div class="card">
+                <img class="logo" src="https://www.designboom.com/wp-content/uploads/2023/09/facebook-new-logo-change-designboom-02.jpg" alt="Facebook Logo">
+                <p>Khám phá những điều bạn yêu thích.</p>
+                <div class="illustrations">
+                    <img class="emoji" src="https://thumbs.dreamstime.com/z/laughing-emoji-icon-closed-eyes-flat-style-laugh-emoticon-sign-symbol-illustration-314954841.jpg" alt="Emoji">
+                    <img class="knot" src="https://m.media-amazon.com/images/I/816fcW9ZAcL.jpg_BO30,255,255,255_UF750,750_SR1910,1000,0,C_QL100_.jpg" alt="Knot Pillow">
+                    <img class="skateboarder" src="https://us.images.westend61.de/0001429006pw/young-man-jumping-over-retaining-wall-against-clear-blue-sky-during-sunny-day-LJF01691.jpg" alt="Skateboarder">
+                    <img class="popcorn" src="https://thumbs.dreamstime.com/b/cinema-movie-night-popcorn-bucket-film-reel-clapperboard-ticket-entertainment-scene-against-red-background-417783029.jpg" alt="Popcorn">
+                    <img class="girl" src="https://as1.ftcdn.net/jpg/02/94/61/16/1000_F_294611639_JV6gBLbRTQ67OC3uFkup40Fp1cjnZbbj.jpg" alt="Smiling Girl">
+                </div>
+            </div>
+            <div class="language">Tiếng Việt</div>
+            <form action="#">
+                <input type="email" placeholder="Email hoặc số di động" required>
+                <input type="password" placeholder="Mật khẩu" required>
+                <div class="fb-submit">
+                    <button type="submit" class="login">Đăng nhập</button>
+                    <a href="#" class="forgot">Quên mật khẩu?</a>
+                </div>
+                <hr>
+                <div class="button">
+                    <a href="#">Tạo tài khoản mới</a>
+                </div>
+            </form>
+            <div class="footer-mobile">
+                <div class="meta">∞ Meta</div>
+                <div class="links">
+                    <a href="#">Giới thiệu</a> · <a href="#">Trợ giúp</a> · <a href="#">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-langs">
+            <ol>
+                <li>Tiếng Việt</li>
+                <li><a href="#">English (US)</a></li>
+                <!-- Thêm các ngôn ngữ khác nếu cần, nhưng ẩn trên mobile -->
+                <li><button>+</button></li>
+            </ol>
+            <ol>
+                <li><a href="#">Đăng ký</a></li>
+                <li><a href="#">Đăng nhập</a></li>
+                <!-- Các link khác -->
+            </ol>
+            <small>Meta © 2026</small>
+        </div>
+    </footer>
+</body>
+
+</html>
